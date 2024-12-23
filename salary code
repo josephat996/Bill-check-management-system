@@ -1,0 +1,74 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Employee class
+class Employee {
+private:
+    string name;
+    double baseSalary;
+    double deductions;
+    double bonus;
+
+public:
+    // Constructor to initialize the employee details
+    Employee(string empName, double empBaseSalary) {
+        name = empName;
+        baseSalary = empBaseSalary;
+        deductions = 0;
+        bonus = 0;
+    }
+
+    // Method to set deductions
+    void setDeductions(double deductionAmount) {
+        deductions = deductionAmount;
+    }
+
+    // Method to set bonus
+    void setBonus(double bonusAmount) {
+        bonus = bonusAmount;
+    }
+
+    // Method to calculate the total salary after deductions and bonus
+    double calculateSalary() {
+        return baseSalary + bonus - deductions;
+    }
+
+    // Method to display employee details
+    void displaySalaryDetails() {
+        cout << "Employee Name: " << name << endl;
+        cout << "Base Salary: $" << baseSalary << endl;
+        cout << "Deductions: $" << deductions << endl;
+        cout << "Bonus: $" << bonus << endl;
+        cout << "Total Salary: $" << calculateSalary() << endl;
+    }
+};
+
+int main() {
+    string name;
+    double baseSalary, deduction, bonus;
+
+    // Get employee details from user
+    cout << "Enter employee name: ";
+    getline(cin, name);
+    
+    cout << "Enter base salary: $";
+    cin >> baseSalary;
+
+    // Create Employee object
+    Employee emp(name, baseSalary);
+
+    // Get deductions and bonus
+    cout << "Enter deductions: $";
+    cin >> deduction;
+    emp.setDeductions(deduction);
+
+    cout << "Enter bonus: $";
+    cin >> bonus;
+    emp.setBonus(bonus);
+
+    // Display salary details
+    emp.displaySalaryDetails();
+
+    return 0;
+}
